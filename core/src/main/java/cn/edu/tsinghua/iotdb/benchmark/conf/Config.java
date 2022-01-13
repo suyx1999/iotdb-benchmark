@@ -242,6 +242,7 @@ public class Config {
   // whether to insert/add anomalies to the copied times series
   // TODO: insert anomalies to any kind of series
   private boolean IS_ADD_ANOMALY = false;
+  private String ANOMALY_TYPE = "times";
   private double ANOMALY_RATE = 0.1;
   private int ANOMALY_TIMES = 3;
 
@@ -981,22 +982,41 @@ public class Config {
     this.START_TIME = START_TIME;
   }
 
-  public boolean isIS_COPY_MODE() { return IS_COPY_MODE;
+  public boolean isIS_COPY_MODE() {
+    return IS_COPY_MODE;
   }
 
-  public void setIS_COPY_MODE(boolean IS_COPY_MODE) { this.IS_COPY_MODE = IS_COPY_MODE; }
+  public void setIS_COPY_MODE(boolean IS_COPY_MODE) {
+    this.IS_COPY_MODE = IS_COPY_MODE;
+  }
 
-  public boolean isIS_ADD_ANOMALY() { return IS_ADD_ANOMALY; }
+  public boolean isIS_ADD_ANOMALY() {
+    return IS_ADD_ANOMALY;
+  }
 
-  public void setIS_ADD_ANOMALY(boolean IS_ADD_ANOMALY) {this.IS_ADD_ANOMALY = IS_ADD_ANOMALY; }
+  public void setIS_ADD_ANOMALY(boolean IS_ADD_ANOMALY) {
+    this.IS_ADD_ANOMALY = IS_ADD_ANOMALY;
+  }
 
-  public double getANOMALY_RATE() { return ANOMALY_RATE; }
+  public String getANOMALY_TYPE() {return ANOMALY_TYPE;}
 
-  public void setANOMALY_RATE(double ANOMALY_RATE) { this.ANOMALY_RATE = ANOMALY_RATE;}
+  public void setANOMALY_TYPE(String ANOMALY_TYPE) {this.ANOMALY_TYPE = ANOMALY_TYPE;}
 
-  public int getANOMALY_TIMES() { return ANOMALY_TIMES; }
+  public double getANOMALY_RATE() {
+    return ANOMALY_RATE;
+  }
 
-  public void setANOMALY_TIMES(int ANOMALY_TIMES) { this.ANOMALY_TIMES = ANOMALY_TIMES; }
+  public void setANOMALY_RATE(double ANOMALY_RATE) {
+    this.ANOMALY_RATE = ANOMALY_RATE;
+  }
+
+  public int getANOMALY_TIMES() {
+    return ANOMALY_TIMES;
+  }
+
+  public void setANOMALY_TIMES(int ANOMALY_TIMES) {
+    this.ANOMALY_TIMES = ANOMALY_TIMES;
+  }
 
   public boolean isIS_OUT_OF_ORDER() {
     return IS_OUT_OF_ORDER;
@@ -1490,6 +1510,8 @@ public class Config {
         + '\''
         + "\nIS_ADD_ANOMALY="
         + IS_ADD_ANOMALY
+        + "\nANOMALY_TYPE="
+        + ANOMALY_TYPE
         + "\nANOMALY_RATE="
         + ANOMALY_RATE
         + "\nANOMALY_TIMES="
@@ -1594,6 +1616,7 @@ public class Config {
     properties.put("OP_INTERVAL", this.OP_INTERVAL);
     properties.put("QUERY_INTERVAL", this.QUERY_INTERVAL);
     properties.put("IS_ADD_ANOMALY", this.IS_ADD_ANOMALY);
+    properties.put("ANOMALY_TYPE", this.ANOMALY_TYPE);
     properties.put("ANOMALY_RATE", this.ANOMALY_RATE);
     properties.put("ANOMALY_TIMES", this.ANOMALY_TIMES);
     properties.put("IS_COPY_MODE", this.IS_COPY_MODE);
@@ -1630,6 +1653,4 @@ public class Config {
     properties.put("WORKLOAD_BUFFER_SIZE", this.WORKLOAD_BUFFER_SIZE);
     return properties;
   }
-
-
 }
